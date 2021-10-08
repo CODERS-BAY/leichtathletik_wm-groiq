@@ -67,7 +67,6 @@ CREATE TABLE athlete (
 );
 
 CREATE TABLE participation (
-    pid INT PRIMARY KEY AUTO_INCREMENT,
     eid INT,
     aid INT,
     bib_number INT,
@@ -76,15 +75,18 @@ CREATE TABLE participation (
     FOREIGN KEY (eid)
         REFERENCES sports_event (eid),
     FOREIGN KEY (aid)
-        REFERENCES athlete (aid)
+        REFERENCES athlete (aid),
+    PRIMARY KEY (eid , aid)
 );
 
 CREATE TABLE result (
-    pid INT PRIMARY KEY,
+    eid INT,
+    aid INT,
     score DECIMAL(8 , 2 ),
     place INT,
-    FOREIGN KEY (pid)
-        REFERENCES participation (pid)
+    FOREIGN KEY (eid , aid)
+        REFERENCES participation (eid , aid),
+    PRIMARY KEY (eid , aid)
 );
 
 
