@@ -47,7 +47,7 @@ CREATE TABLE sports_event (
         REFERENCES location (lid)
 );
 
-create table steward (
+create table stewardship (
 	eid int,
     hid int,
     steward_position varchar(64),
