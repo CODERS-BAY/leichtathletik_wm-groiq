@@ -40,7 +40,11 @@ CREATE TABLE sports_event (
     lid INT,
     event_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (referee)
-        REFERENCES helper (hid)
+        REFERENCES helper (hid),
+    FOREIGN KEY (did)
+        REFERENCES discipline (did),
+    FOREIGN KEY (lid)
+        REFERENCES location (lid)
 );
 
 create table steward (
