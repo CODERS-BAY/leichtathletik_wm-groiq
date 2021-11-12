@@ -33,7 +33,7 @@ CREATE TABLE helper (
     is_referee BOOLEAN
 );
 
-CREATE TABLE sports_event (
+CREATE TABLE eventx (
     eid INT PRIMARY KEY AUTO_INCREMENT,
     referee INT,
     did INT,
@@ -51,7 +51,7 @@ create table stewardship (
 	eid int,
     hid int,
     steward_position varchar(64),
-    foreign key (eid) references sports_event (eid),
+    foreign key (eid) references eventx (eid),
     foreign key (hid) references helper (hid),
     primary key (hid, eid)
 );
@@ -73,7 +73,7 @@ CREATE TABLE participation (
     UNIQUE (eid , aid),
     UNIQUE (eid , bib_number),
     FOREIGN KEY (eid)
-        REFERENCES sports_event (eid),
+        REFERENCES eventx (eid),
     FOREIGN KEY (aid)
         REFERENCES athlete (aid),
     PRIMARY KEY (eid , aid)
@@ -83,7 +83,7 @@ CREATE TABLE result (
     eid INT,
     aid INT,
     score DECIMAL(8 , 2 ),
-    place INT,
+    ranking INT,
     FOREIGN KEY (eid , aid)
         REFERENCES participation (eid , aid),
     PRIMARY KEY (eid , aid)
